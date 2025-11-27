@@ -15,7 +15,7 @@ if (-not (Test-Path $SourceChromium)) {
 }
 
 if (-not $DestinationRoot) {
-    $DestinationRoot = Join-Path $repoRoot "dist/$($branding.BrowserName)"
+    $DestinationRoot = Join-Path $repoRoot "dist/$($branding.InstallDirName)"
 }
 
 if (Test-Path $DestinationRoot) {

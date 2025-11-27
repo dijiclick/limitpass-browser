@@ -259,43 +259,45 @@ $ZipBase64 = [System.Convert]::ToBase64String($ZipBytes)
 Write-Host "[INFO] Generating self-extracting installer..." -ForegroundColor Yellow
 
 # Create the self-extracting PowerShell script
-$SfxScript = @"
+$SfxScript = @'
 # LimitPass Browser Self-Extracting Installer
-# Generated: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+# Generated: {GENERATION_DATE}
 
-`$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Stop"
 
 Write-Host ""
 Write-Host "Extracting LimitPass Browser installer..." -ForegroundColor Cyan
 Write-Host ""
 
 # Decode and extract
-`$TempDir = Join-Path `$env:TEMP "LimitPassInstall_`$(Get-Random)"
-New-Item -ItemType Directory -Path `$TempDir -Force | Out-Null
+$TempDir = Join-Path $env:TEMP "LimitPassInstall_$(Get-Random)"
+New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
 
 try {
     # Embedded payload (base64 encoded ZIP)
-    `$payload = @"
-
-"@ + $ZipBase64 + @"
-
+    $payload = @"
+{PAYLOAD_BASE64}
 "@
 
-    `$zipPath = Join-Path `$TempDir "installer.zip"
-    [System.IO.File]::WriteAllBytes(`$zipPath, [System.Convert]::FromBase64String(`$payload))
+    $zipPath = Join-Path $TempDir "installer.zip"
+    [System.IO.File]::WriteAllBytes($zipPath, [System.Convert]::FromBase64String($payload))
     
     # Extract
     Add-Type -AssemblyName System.IO.Compression.FileSystem
-    [System.IO.Compression.ZipFile]::ExtractToDirectory(`$zipPath, `$TempDir)
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $TempDir)
     
     # Run installer
-    `$installScript = Join-Path `$TempDir "install.ps1"
-    & `$installScript
+    $installScript = Join-Path $TempDir "install.ps1"
+    & $installScript
 }
 finally {
     # Cleanup handled by install script
 }
-"@
+'@
+
+# Replace placeholders
+$SfxScript = $SfxScript -replace '{GENERATION_DATE}', (Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+$SfxScript = $SfxScript -replace '{PAYLOAD_BASE64}', $ZipBase64
 
 # Save the SFX installer
 $OutputFile = Join-Path $OutputPath "$BrowserName`_Setup.ps1"
