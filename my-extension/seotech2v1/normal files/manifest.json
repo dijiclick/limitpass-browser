@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Custom User Agent for Incognito",
+  "version": "1.0",
+  "description": "Sets a custom user agent for incognito browsing",
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "cookies",
+    "tabs",
+    "management"
+  ],
+  "background": {
+    "scripts": ["background-main.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["script-main.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["index-main.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "incognito": "split"
+} 

@@ -1,0 +1,10 @@
+--disable-component-update
+--no-default-browser-check
+--disable-background-networking
+--disable-features=ExtensionsMenuAccessControl
+--load-extension="{EXTENSION_PATHS}"
+--disable-extensions-except="{EXTENSION_PATHS}"
+--user-data-dir="{USER_DATA_DIR}"
+--disable-sync
+--disable-features=Translate,BlinkGenPropertyTrees
+

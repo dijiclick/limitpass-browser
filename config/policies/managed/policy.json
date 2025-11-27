@@ -1,0 +1,47 @@
+{
+  "ExtensionSettings": {
+    "*": {
+      "installation_mode": "blocked",
+      "blocked_install_message": "Extensions are disabled in this browser"
+    },
+    "dmjnibddgpooclgkjdopdgckdplaljmp": {
+      "installation_mode": "allowed",
+      "incognito_mode": "enabled"
+    },
+    "oinhldimnjnaogjpacdoophbejgnfhbn": {
+      "installation_mode": "allowed",
+      "incognito_mode": "enabled"
+    }
+  },
+  "ExtensionInstallBlocklist": [
+    "*"
+  ],
+  "ExtensionInstallAllowlist": [
+    "dmjnibddgpooclgkjdopdgckdplaljmp",
+    "oinhldimnjnaogjpacdoophbejgnfhbn"
+  ],
+  "ExtensionInstallForcelist": [],
+  "ExtensionAllowedTypes": [
+    "extension"
+  ],
+  "ExtensionInstallSources": [
+    "file:///*"
+  ],
+  "ExtensionUpdatesSuppressed": true,
+  "DeveloperToolsAvailability": 2,
+  "ChromeWebStoreEnabled": 0,
+  "URLBlocklist": [
+    "chrome://extensions",
+    "https://chrome.google.com/webstore/*",
+    "https://chromewebstore.google.com/*"
+  ],
+  "URLAllowlist": [
+    "chrome://settings/help"
+  ],
+  "BrowserAddPersonEnabled": false,
+  "BrowserGuestModeEnabled": false,
+  "ForceGoogleSafeSearch": true,
+  "PasswordManagerEnabled": false,
+  "PromotionalTabsEnabled": false
+}
+

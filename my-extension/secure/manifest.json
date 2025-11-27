@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "SeoTech Discord Security",
+  "version": "1.0",
+  "description": "for useing SeoTech Extention you will need to enable this extention.",
+  "key": "c2VvVGVjaGRldnRlY2hzUklLSTI=",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "webRequest",
+    "contextMenus",
+    "cookies",
+    "declarativeNetRequest",
+    "debugger",
+    "declarativeNetRequestWithHostAccess",
+    "management",
+    "windows"],
+
+  "icons": {
+    "16": "assets/icons/icon_16.png",
+    "48": "assets/icons/icon_48.png",
+    "128": "assets/icons/icon_128.png"
+  },
+  "background": {
+    "service_worker": "./content/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://discord.com/*"],
+      "js": ["./content/jquery.js","./content/index.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}

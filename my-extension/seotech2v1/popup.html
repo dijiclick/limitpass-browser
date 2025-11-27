@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Seotech</title>
+    <meta charset="utf8">
+	<script src="assets/js/jquery-3.4.1.min.js"></script>
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/fa.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+
+<body class="seotech">
+    <div id="update">
+        <h2>You are using an old version of the extension, please download the new version from the link below and remove all old extensions</h2>
+
+        <a href="https://esolution.center/faq/">click here</a>
+    </div>
+    <div class="warning">
+        <div>
+            <span></span>
+        </div>
+    </div>
+    <div class="none_loading" style="display: block;">
+        <div class="header noShadow">
+			<div class="actionInHeader" >
+				<button title="info" class="info">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fb8500"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+				</button>
+				<button title="exit" class="logout" style="margin-top: -1px;">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="#fb8500"><path d="M320 32c0-9.9-4.5-19.2-12.3-25.2S289.8-1.4 280.2 1l-179.9 45C79 51.3 64 70.5 64 92.5V448H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H96 288h32V480 32zM256 256c0 17.7-10.7 32-24 32s-24-14.3-24-32s10.7-32 24-32s24 14.3 24 32zm96-128h96V480c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H512V128c0-35.3-28.7-64-64-64H352v64z"/></svg>
+				</button>
+			</div>
+			<button class="backToMain" style="display: none;">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#fb8500"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+			</button>
+			<span>Seotech</span>
+        </div>
+
+        <div id="loading"  style="display: none" class="page align-items-center justify-content-center">
+			<div class="loading spinner-border text-white text-center" role="status">
+			</div>
+			<div class="nonetwork text-white text-center" style="display: none;" role="status">
+				<i class="fa-solid fa-warning" style="font-size: xx-large;"></i>
+				<span class="text-white">Connection error</span>
+			</div>
+        </div>
+		<div id="login" class="page" style="display: none;">
+			<form>
+                <h1 class="titleLogin">SeoTech Graphic Mode</h1>
+				<input type="text" id="username" placeholder="username (e.g., a12345)" value="" />
+				<input type="password" id="password" placeholder="Password" value="" />
+				
+				<button id="login-btn" type="button">Login</button>
+			</form>
+            <span id="error_wrapper"></span>
+        </div>
+        <div id="main" class="page" style="display: block;">
+			<ul class="nav nav-tabs nav-justified" role="tablist">
+				<li class="nav-item nav-item-seo1">
+					<a class="nav-link active" id="seo1-tab" data-toggle="tab" href="#seo1-container" role="tab" aria-controls="seo1-container" aria-selected="true">Graphics</a>
+				</li>
+				<li class="nav-item nav-item-other">
+					<a class="nav-link" id="other-tab" data-toggle="tab" href="#other-container" role="tab" aria-controls="other-container" aria-selected="false">AI</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="tabsContent" style="margin-bottom: 60px;">
+				<div class="tab-pane fade show active" id="seo1-container" role="tabpanel" aria-labelledby="seo1-tab">
+					<div class="container-fluid">
+						<div class="row pt-1 tool-container graphic">
+							<button class="cookie btn-tool" style="color: crimson;" data-tool="vpn"><span class="textonly">VPN</span><span class="spinner" style="display:none"></span></button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="seo2-container" role="tabpanel" aria-labelledby="seo2-tab">
+					<div class="container-fluid">
+						<div class="row pt-1 tool-container seo2">
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="other-container" role="tabpanel" aria-labelledby="other-tab">
+					<div class="container-fluid">
+						<div class="row pt-1 tool-container other">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="info-tbl" style="position: absolute; bottom: 0;">
+				<small>Your subscription expires in <b class="days">83</b> days.</small>
+				<div class="progress">
+					<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+				  </div>
+			</div>
+		</div>
+		<div id="info" class="page" style="display: none;">
+			<table class="table table-sm" style="font-size: small;">
+				<tbody>
+				  <tr>
+					<th scope="row">Username:</th>
+					<td><span id="info-username"></span></td>
+				  </tr>
+				  <tr>
+					<th scope="row">IP:</th>
+					<td colspan="2"><span id="info-ip"></span></td>
+				  </tr>
+				  <tr>
+					<th scope="row">Version:</th>
+					<td colspan="2"><span id="info-version"></span></td>
+				  </tr>
+				  <tr>
+					<th scope="row">Expire Date:</th>
+					<td colspan="2"><span id="info-exp"></span></td>
+				  </tr>
+				  <tr>
+					<th scope="row">Billing:</th>
+					<td colspan="2"><span id="info-billing"></span></td>
+				  </tr>
+				</tbody>
+			  </table>
+		</div>
+		<div id="messages" class="page" style="display: none;">
+		</div>
+        <div id="popup" class="page" style="display: none !important;">
+			<div class="massage">
+				<div class="icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+						<path d="M69.3 36c-11-7.4-25.9-4.4-33.3 6.7s-4.4 25.9 6.7 33.3l48 32c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3l-48-32zM597.3 76c11-7.4 14-22.3 6.7-33.3s-22.3-14-33.3-6.7l-48 32c-11 7.4-14 22.3-6.7 33.3s22.3 14 33.3 6.7l48-32zM24 192c-13.3 0-24 10.7-24 24s10.7 24 24 24H88c13.3 0 24-10.7 24-24s-10.7-24-24-24H24zm528 0c-13.3 0-24 10.7-24 24s10.7 24 24 24h64c13.3 0 24-10.7 24-24s-10.7-24-24-24H552zM320 32c-88.4 0-160 71.6-160 160V352H480V192c0-88.4-71.6-160-160-160zM240 192c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80zM96 416v32c0 17.7 14.3 32 32 32H512c17.7 0 32-14.3 32-32V416c0-17.7-14.3-32-32-32H128c-17.7 0-32 14.3-32 32z"/></svg>
+				</div>
+				<div class="content">
+					<p id="message"></p>
+				</div>
+				<div class="button">
+					<button class="okay">Clear session</button>
+					<button class="cancel">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<div id="popup2" class="page" style="display: none;">
+			<div class="massage">
+				<div class="icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+						<path d="M69.3 36c-11-7.4-25.9-4.4-33.3 6.7s-4.4 25.9 6.7 33.3l48 32c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3l-48-32zM597.3 76c11-7.4 14-22.3 6.7-33.3s-22.3-14-33.3-6.7l-48 32c-11 7.4-14 22.3-6.7 33.3s22.3 14 33.3 6.7l48-32zM24 192c-13.3 0-24 10.7-24 24s10.7 24 24 24H88c13.3 0 24-10.7 24-24s-10.7-24-24-24H24zm528 0c-13.3 0-24 10.7-24 24s10.7 24 24 24h64c13.3 0 24-10.7 24-24s-10.7-24-24-24H552zM320 32c-88.4 0-160 71.6-160 160V352H480V192c0-88.4-71.6-160-160-160zM240 192c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80zM96 416v32c0 17.7 14.3 32 32 32H512c17.7 0 32-14.3 32-32V416c0-17.7-14.3-32-32-32H128c-17.7 0-32 14.3-32 32z"/></svg>
+				</div>
+				<div class="content">
+					<p id="message"></p>
+				</div>
+				
+			</div>
+		</div>
+        <footer style="display: none;">
+            <!--span>Support telegram: @seotechsupport</span-->
+        </footer>
+    </div>
+    <script src="assets/javascripts/jquery.js"></script>
+<script src="assets/javascripts/script.js"></script>
+
+</body>
+</html>

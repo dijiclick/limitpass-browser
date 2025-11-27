@@ -1,0 +1,40 @@
+# Build artifacts
+dist/
+chromium/
+temp/
+*.zip
+
+# Windows
+Thumbs.db
+Desktop.ini
+*.lnk
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Temporary files
+nul
+*.tmp
+*.temp
+
+# Extension source (keep structure, ignore if contains sensitive data)
+# my-extension/secure/
+# my-extension/seotech2v1/
+
+# Compiled installers
+*.exe
+*.bat
+*.vbs
+!src/**/*.cmd
+
+# OS files
+.DS_Store
+*.orig
+
