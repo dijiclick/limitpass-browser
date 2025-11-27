@@ -17,8 +17,8 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={autopf}\LimitPassBrowser
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-; Output settings - the installer will be created in the same folder
-OutputDir=.
+; Output settings - the installer will be created in dist folder
+OutputDir=..\dist
 OutputBaseFilename=LimitPassBrowser_Setup
 ; Compression
 Compression=lzma2/ultra64
@@ -26,7 +26,8 @@ SolidCompression=yes
 LZMAUseSeparateProcess=yes
 ; UI settings
 WizardStyle=modern
-SetupIconFile=mybrowser.ico
+; Icon file (optional - comment out if not available)
+; SetupIconFile=mybrowser.ico
 UninstallDisplayIcon={app}\mybrowser.ico
 ; Require admin for Program Files installation
 PrivilegesRequired=admin
@@ -47,19 +48,15 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 
 [Files]
 ; Copy the entire browser folder
-; IMPORTANT: Change "dist\LimitPassBrowser" to match your actual dist folder path
-Source: "dist\LimitPassBrowser\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-
-; Copy icon separately for shortcuts (if exists)
-Source: "mybrowser.ico"; DestDir: "{app}"; Flags: ignoreversion dontcopy
-Source: "assets\icons\mybrowser.ico"; DestDir: "{app}"; DestName: "mybrowser.ico"; Flags: ignoreversion dontcopy
+; Path is relative to project root (one level up from installer folder)
+Source: "..\dist\LimitPassBrowser\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 ; Desktop shortcut
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\mybrowser.ico"; Tasks: desktopicon
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 ; Start Menu shortcut  
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\mybrowser.ico"
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 
 ; Start Menu uninstall shortcut
 Name: "{autoprograms}\Uninstall {#MyAppName}"; Filename: "{uninstallexe}"
