@@ -50,8 +50,9 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 ; IMPORTANT: Change "dist\LimitPassBrowser" to match your actual dist folder path
 Source: "dist\LimitPassBrowser\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
-; Copy icon separately for shortcuts
-Source: "mybrowser.ico"; DestDir: "{app}"; Flags: ignoreversion
+; Copy icon separately for shortcuts (if exists)
+Source: "mybrowser.ico"; DestDir: "{app}"; Flags: ignoreversion dontcopy
+Source: "assets\icons\mybrowser.ico"; DestDir: "{app}"; DestName: "mybrowser.ico"; Flags: ignoreversion dontcopy
 
 [Icons]
 ; Desktop shortcut

@@ -15,12 +15,20 @@ if (-not (Test-Path $PayloadRoot)) {
 }
 
 # Try LimitPassBrowser.iss first, fall back to MyBrowser.iss for compatibility
+# Try LimitPassBrowser.iss first, fall back to MyBrowser.iss for compatibility
 $iss = Join-Path $repoRoot 'installer/LimitPassBrowser.iss'
 if (-not (Test-Path $iss)) {
     $iss = Join-Path $repoRoot 'installer/MyBrowser.iss'
     if (-not (Test-Path $iss)) {
         throw "Installer script missing. Expected: installer/LimitPassBrowser.iss or installer/MyBrowser.iss"
     }
+}
+
+# Copy icon to root if it exists in assets (for Inno Setup)
+$iconSource = Join-Path $repoRoot $branding.IconPath
+$iconRoot = Join-Path $repoRoot 'mybrowser.ico'
+if ((Test-Path $iconSource) -and -not (Test-Path $iconRoot)) {
+    Copy-Item -Path $iconSource -Destination $iconRoot -Force -ErrorAction SilentlyContinue
 }
 
 $iscc = $branding.IsccPath
@@ -48,6 +56,7 @@ try {
 
 if (-not $hasInnoSetup) {
     Write-Warning "Inno Setup not found. Creating self-extracting installer using PowerShell method..."
+    Write-Warning "For a proper .EXE installer, install Inno Setup from: https://jrsoftware.org/isdl.php"
     # Try the new Build-Installer.ps1 first, fall back to create-sfx-installer.ps1
     $buildInstaller = Join-Path $repoRoot 'installer/Build-Installer.ps1'
     if (Test-Path $buildInstaller) {
