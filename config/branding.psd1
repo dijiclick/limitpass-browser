@@ -1,7 +1,7 @@
 @{
-    BrowserName          = 'MyBrowser'
-    PublisherName        = 'My Company, Inc.'
-    CompanyName          = 'My Company, Inc.'
+    BrowserName          = 'LimitPass Browser'
+    PublisherName        = 'DijiClick'
+    CompanyName          = 'DijiClick'
     BrowserDescription   = 'Secure Chromium build with managed extension'
     Version              = '1.0.0'
     IconPath             = 'assets/icons/mybrowser.ico'
@@ -15,10 +15,10 @@
     BlockChromeWebStore  = $true
     BlockExtensionsPage  = $true
     ForcePortableUserData = $true
-    CustomInstallerID    = 'MyBrowserSetup'
-    InstallDirName       = 'MyBrowser'
+    CustomInstallerID    = 'LimitPassBrowserSetup'
+    InstallDirName       = 'LimitPassBrowser'
     LicenseFile          = ''
     IsccPath             = 'ISCC.exe'
-    OutputInstallerName  = 'MyBrowser_Setup.exe'
+    OutputInstallerName  = 'LimitPassBrowser_Setup.exe'
 }
 

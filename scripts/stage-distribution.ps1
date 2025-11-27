@@ -31,7 +31,12 @@ $configDir = Join-Path $DestinationRoot 'config'
 Ensure-Directory -Path $configDir
 Copy-Item -Path (Join-Path $repoRoot 'config/chromium-flags.txt') -Destination $configDir -Force
 
-Copy-Item -Path (Join-Path $repoRoot 'src/launcher/MyBrowser.cmd') -Destination (Join-Path $DestinationRoot ("{0}.cmd" -f $branding.BrowserName)) -Force
+# Try LimitPassBrowser.cmd first, fall back to MyBrowser.cmd for compatibility
+$launcherSource = Join-Path $repoRoot "src/launcher/LimitPassBrowser.cmd"
+if (-not (Test-Path $launcherSource)) {
+    $launcherSource = Join-Path $repoRoot 'src/launcher/MyBrowser.cmd'
+}
+Copy-Item -Path $launcherSource -Destination (Join-Path $DestinationRoot ("{0}.cmd" -f $branding.InstallDirName)) -Force
 
 $iconSource = Join-Path $repoRoot $branding.IconPath
 if (Test-Path $iconSource) {

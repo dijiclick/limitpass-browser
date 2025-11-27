@@ -33,6 +33,8 @@ nul
 *.bat
 *.vbs
 !src/**/*.cmd
+!installer/*.bat
+!installer/*.ps1
 
 # OS files
 .DS_Store

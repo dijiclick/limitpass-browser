@@ -14,9 +14,13 @@ if (-not (Test-Path $PayloadRoot)) {
     throw "Payload root not found at $PayloadRoot"
 }
 
-$iss = Join-Path $repoRoot 'installer/MyBrowser.iss'
+# Try LimitPassBrowser.iss first, fall back to MyBrowser.iss for compatibility
+$iss = Join-Path $repoRoot 'installer/LimitPassBrowser.iss'
 if (-not (Test-Path $iss)) {
-    throw "Installer script missing: $iss"
+    $iss = Join-Path $repoRoot 'installer/MyBrowser.iss'
+    if (-not (Test-Path $iss)) {
+        throw "Installer script missing. Expected: installer/LimitPassBrowser.iss or installer/MyBrowser.iss"
+    }
 }
 
 $iscc = $branding.IsccPath
@@ -43,8 +47,14 @@ try {
 }
 
 if (-not $hasInnoSetup) {
-    Write-Warning "Inno Setup not found. Creating self-extracting installer using IExpress..."
-    & (Join-Path $PSScriptRoot 'create-sfx-installer.ps1') -PayloadRoot $PayloadRoot -OutputInstaller $OutputInstaller
+    Write-Warning "Inno Setup not found. Creating self-extracting installer using PowerShell method..."
+    # Try the new Build-Installer.ps1 first, fall back to create-sfx-installer.ps1
+    $buildInstaller = Join-Path $repoRoot 'installer/Build-Installer.ps1'
+    if (Test-Path $buildInstaller) {
+        & $buildInstaller -SourcePath $PayloadRoot -OutputPath (Split-Path $OutputInstaller -Parent) -BrowserName $branding.InstallDirName
+    } else {
+        & (Join-Path $PSScriptRoot 'create-sfx-installer.ps1') -PayloadRoot $PayloadRoot -OutputInstaller $OutputInstaller
+    }
     return
 }
 
